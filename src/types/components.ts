@@ -1,8 +1,3 @@
-type BaseComponent = {
-  _type: string;
-  _key: string;
-};
-
 export type HeroProps = {
   hero: {
     _type: string;
