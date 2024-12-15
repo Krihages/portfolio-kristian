@@ -1,3 +1,14 @@
+type BaseComponent = {
+  _type: string;
+  _key: string;
+};
+
+export type Components = BaseComponent & {
+  hero?: HeroProps["hero"];
+  projectsList?: ProjectsProps["projectsList"];
+  contact?: ContactProps["contact"];
+};
+
 export type HeroProps = {
   hero: {
     _type: string;
@@ -69,5 +80,3 @@ export type ContactProps = {
     email?: string;
   };
 };
-
-export type Components = HeroProps | ProjectsProps | ContactProps;
