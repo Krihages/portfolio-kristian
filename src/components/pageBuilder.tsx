@@ -13,11 +13,13 @@ export default function PageBuilder({
       {components?.map((component) => {
         return (
           <div key={component._key}>
-            {component._type === "hero" && <Hero hero={component} />}
+            {component._type === "hero" && <Hero hero={component as any} />}
             {component._type === "projects" && (
-              <Projects projects={component} />
+              <Projects projects={component as any} />
             )}
-            {component._type === "contact" && <Contact contact={component} />}
+            {component._type === "contact" && (
+              <Contact contact={component as any} />
+            )}
           </div>
         );
       })}
