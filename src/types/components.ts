@@ -3,12 +3,15 @@ type BaseComponent = {
   _key: string;
 };
 
-export type HeroProps = BaseComponent & {
-  _type: "hero";
-  name: string;
-  subtitle?: string;
-  image?: string;
-  introduction: IntroductionProps;
+export type HeroProps = {
+  hero: {
+    _type: string;
+    _key: string;
+    name: string;
+    subtitle?: string;
+    image?: string;
+    introduction: IntroductionProps;
+  };
 };
 
 export type IntroductionProps = {
@@ -38,8 +41,7 @@ type Image = {
   };
 };
 
-export type ProjectsProps = BaseComponent & {
-  _type: "projects";
+export type ProjectsProps = {
   projectsList: ProjectProps[];
 };
 
@@ -63,11 +65,14 @@ type techStack =
   | "html"
   | "css";
 
-export type ContactProps = BaseComponent & {
-  _type: "contact";
-  title: string;
-  description?: string;
-  email?: string;
+export type ContactProps = {
+  contact: {
+    _type: string;
+    _key: string;
+    title: string;
+    description?: string;
+    email?: string;
+  };
 };
 
 export type Components = HeroProps | ProjectsProps | ContactProps;
