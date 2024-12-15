@@ -6,7 +6,7 @@ export default async function page({
 }: {
   params: { locale: string; slug: string };
 }) {
-  const data = await sanityFetch(params.locale);
+  const data = await sanityFetch(params.locale, params.slug);
   if (!data) return null;
   const content = data.content[0];
 

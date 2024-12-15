@@ -1,9 +1,12 @@
 import { defineQuery } from "next-sanity";
 import { client } from "./client";
+import { SanityFetchFunction } from "@/types/sanity";
 
-export default async function sanityFetch(language: string, slug?: string) {
+const sanityFetch: SanityFetchFunction = async (language, slug) => {
   const query = defineQuery(
-    `*[_type == "page" && language == "${language}"${slug ? ` && slug.current == "${slug}"` : ""}][0]{
+    `*[_type == "page" && language == "${language}"${
+      slug ? ` && slug.current == "${slug}"` : ""
+    }][0]{
       content,  
       language,
       navigation,
@@ -18,4 +21,6 @@ export default async function sanityFetch(language: string, slug?: string) {
   const data = await client.fetch(query);
 
   return data;
-}
+};
+
+export default sanityFetch;
