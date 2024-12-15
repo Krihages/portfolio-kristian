@@ -1,12 +1,14 @@
-export type HeroProps = {
-  hero: {
-    _type: string;
-    _key: string;
-    name: string;
-    subtitle?: string;
-    image?: string;
-    introduction: IntroductionProps;
-  };
+type BaseComponent = {
+  _type: string;
+  _key: string;
+};
+
+export type HeroProps = BaseComponent & {
+  _type: "hero";
+  name: string;
+  subtitle?: string;
+  image?: string;
+  introduction: IntroductionProps;
 };
 
 export type IntroductionProps = {
@@ -36,7 +38,8 @@ type Image = {
   };
 };
 
-export type ProjectsProps = {
+export type ProjectsProps = BaseComponent & {
+  _type: "projects";
   projectsList: ProjectProps[];
 };
 
@@ -49,6 +52,7 @@ export type ProjectProps = {
   githubLink: string;
   stack: techStack[];
 };
+
 type techStack =
   | "tailwind"
   | "nextjs"
@@ -59,14 +63,11 @@ type techStack =
   | "html"
   | "css";
 
-export type ContactProps = {
-  contact: {
-    _type: string;
-    _key: string;
-    title: string;
-    description?: string;
-    email?: string;
-  };
+export type ContactProps = BaseComponent & {
+  _type: "contact";
+  title: string;
+  description?: string;
+  email?: string;
 };
 
 export type Components = HeroProps | ProjectsProps | ContactProps;

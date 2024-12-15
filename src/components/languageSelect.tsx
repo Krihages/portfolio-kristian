@@ -27,7 +27,6 @@ export default function LanguageSelect({ locale }: { locale: "en" | "no" }) {
   const [selectedLang, setSelectedLang] = useState(locale);
   const router = useRouter();
   const localLabels = localeValues(locale);
-  console.log(localLabels);
 
   return (
     <Select

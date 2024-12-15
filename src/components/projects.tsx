@@ -14,7 +14,6 @@ import ToolTip from "@/components/tooltip";
 import { LinkIcon, GithubIcon } from "@/components/icons";
 
 export default function Projects({ projects }: { projects: ProjectsProps }) {
-  console.log("projects", projects.projectsList[0].stack);
   return (
     <Wrapper className="flex flex-col gap-20 portefølje portfolio">
       <h2 className="text-4xl font-bold">{projects?.title ?? "Portfolio"}</h2>

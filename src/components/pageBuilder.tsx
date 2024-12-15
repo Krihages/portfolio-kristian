@@ -1,9 +1,4 @@
-import {
-  Components,
-  ContactProps,
-  HeroProps,
-  ProjectsProps,
-} from "@/types/components";
+import { Components } from "@/types/components";
 import Hero from "./hero";
 import Projects from "./projects";
 import Contact from "./contact";
@@ -16,18 +11,13 @@ export default function PageBuilder({
   return (
     <>
       {components?.map((component) => {
-        console.log("component type", component._type);
         return (
-          <div key={component?._key}>
-            {component._type === "hero" && (
-              <Hero hero={component as HeroProps} />
-            )}
+          <div key={component._key}>
+            {component._type === "hero" && <Hero hero={component} />}
             {component._type === "projects" && (
-              <Projects projects={component as ProjectsProps} />
+              <Projects projects={component} />
             )}
-            {component._type === "contact" && (
-              <Contact contact={component as ContactProps} />
-            )}
+            {component._type === "contact" && <Contact contact={component} />}
           </div>
         );
       })}
