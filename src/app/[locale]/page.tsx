@@ -5,9 +5,10 @@ import Header from "@/components/header";
 export default async function Page({
   params,
 }: Readonly<{ params: { locale: string; slug: string } }>) {
-  params.locale = params.locale ?? "en";
+  const resolvedParams = await Promise.resolve(params);
+  const locale = resolvedParams.locale ?? "en";
 
-  const data = await sanityFetch(params.locale);
+  const data = await sanityFetch(locale);
 
   if (!data) return null;
 
@@ -16,7 +17,7 @@ export default async function Page({
 
   return (
     <>
-      <Header nav={header.nav} locale={params.locale as "en" | "no"} />
+      <Header nav={header.nav} locale={locale as "en" | "no"} />
       <PageBuilder components={components} />
     </>
   );

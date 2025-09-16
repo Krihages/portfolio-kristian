@@ -49,6 +49,7 @@ type Image = {
 
 export type ProjectsProps = {
   projectsList: ProjectProps[];
+  title?: string;
 };
 
 export type ProjectProps = {
@@ -59,6 +60,14 @@ export type ProjectProps = {
   liveLink: string;
   githubLink: string;
   stack: techStack[];
+  auth: {
+    required: boolean;
+    data: AuthData;
+  };
+};
+type AuthData = {
+  username: string;
+  password: string;
 };
 
 type techStack =

@@ -14,16 +14,17 @@ import ToolTip from "@/components/tooltip";
 import { LinkIcon, GithubIcon } from "@/components/icons";
 
 export default function Projects({ projects }: { projects: ProjectsProps }) {
+  console.log(projects.projectsList[0]);
   return (
     <Wrapper className="flex flex-col gap-20 portefølje portfolio">
       <h2 className="text-4xl font-bold">{projects?.title ?? "Portfolio"}</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         {projects.projectsList?.map((project) => (
           <Card key={project._key} className="border-none flex flex-col gap-2">
+            <div      className="aspect-[3/2] relative">
             <Link
               href={project.liveLink}
               target="_blank"
-              className="aspect-[3/2] relative"
             >
               <Image
                 src={urlForImage(project?.media[0]).url()}
@@ -33,6 +34,14 @@ export default function Projects({ projects }: { projects: ProjectsProps }) {
                 quality={100}
               />
             </Link>
+            {project.auth?.required && (
+              <div className="absolute bottom-0 right-0 rounded-tl-lg bg-card opacity-95 py-4 px-6 w-80 flex flex-col justify-center border-b-2 border-primary ">
+                <p className="font-semibold">Login details:</p>
+                <p className="flex gap-8 text-sm">username: <span className="font-bold">{project.auth.data.username}</span></p>
+                <p className="flex gap-8 text-sm">password: <span className="font-bold">{project.auth.data.password}</span></p>
+              </div>
+            )}
+            </div>
             <div className="flex flex-col justify-between gap-2 h-full">
               <CardHeader>
                 <CardTitle className="text-lg font-bold">
